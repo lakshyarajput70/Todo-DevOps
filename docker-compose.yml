@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: ./backend
+    image: lakshyakumar70/todo-backend:1.0
+    container_name: todo-backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "5000:5000"
+    restart: always
+
+  frontend:
+    build: ./frontend
+    image: lakshyakumar70/todo-frontend:1.0
+    container_name: todo-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
