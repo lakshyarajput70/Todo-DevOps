@@ -4,3 +4,57 @@
 
 Path
 /api/todos
+
+http://todo-alb-2047049081.ap-south-1.elb.amazonaws.com/
+
+docker compose up -d --build or 
+docker compose up -d
+
+http://localhost:3000
+docker compose down
+
+
+------------If images are not downloaded
+docker pull lakshyakumar70/todo-backend:1.0
+docker pull lakshyakumar70/todo-frontend:1.0
+
+docker run -d -p 3000:80 --name todo-frontend lakshyakumar70/todo-frontend:1.0
+docker run -d -p 5000:5000 --name todo-backend lakshyakumar70/todo-backend:1.0
+
+
+-------------Kubernetes------------
+
+minikube start --driver=docker
+
+kubectl apply -f backend-deployment.yml
+kubectl apply -f backend-service.yml
+kubectl apply -f frontend-deployment.yml
+kubectl apply -f frontend-service.yml
+kubectl apply -f mongo-secret.yml
+kubectl apply -f nginx-config.yml
+
+
+minikube service frontend-service
+
+===========STOP==================
+kubectl delete deployment todo-frontend
+kubectl delete deployment todo-backend
+
+kubectl delete svc frontend-service
+kubectl delete svc backend-service
+
+kubectl delete configmap nginx-config
+kubectl delete secret mongo-secret
+
+======Update image===========
+kubectl set image deployment/todo-frontend \
+frontend=lakshyakumar70/todo-frontend:v6
+
+kubectl set image deployment/todo-backend \
+backend=lakshyakumar70/todo-backend:v4
+
+
+==========Restart deployment===========
+kubectl rollout restart deployment todo-frontend
+kubectl rollout restart deployment todo-backend
+
