@@ -1,0 +1,8 @@
+node_modules/
+dist/
+
+# env files
+**/.env
+
+# ignore ONLY secret file
+greencart-k8s/mongo-secret.yml
