@@ -37,4 +37,8 @@ app.delete("/todos/:id",async(req,res)=>{
  res.json({message:"deleted"});
 });
 
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
 app.listen(5000);
