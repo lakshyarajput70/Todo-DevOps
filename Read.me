@@ -21,7 +21,10 @@ docker pull lakshyakumar70/todo-frontend:1.0
 docker run -d -p 3000:80 --name todo-frontend lakshyakumar70/todo-frontend:1.0
 docker run -d -p 5000:5000 --name todo-backend lakshyakumar70/todo-backend:1.0
 
+ docker compose -f docker-compose.yml up -d
+ docker compose down
 
+ docker compose -f docker-compose-image.yml up -d
 -------------Kubernetes------------
 
 minikube start --driver=docker
