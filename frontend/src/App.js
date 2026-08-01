@@ -7,7 +7,7 @@ function App() {
   const [text, setText] = useState("");
 
   // const API = "/api";
-  const API = import.meta.env.VITE_API_URL;  //Changing for the render/vercel deployment
+  const API = process.env.REACT_APP_API_URL;  //Changing for the render/vercel deployment
   const fetchTodos = async () => {
     const res = await axios.get(`${API}/todos`);
     setTodos(res.data);
