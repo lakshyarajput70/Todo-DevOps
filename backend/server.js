@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 
 //Allow multiple origins
-const allowedOrigins = ['http://localhost:5173','https://todo-dev-ops.vercel.app/']
+const allowedOrigins = ['http://localhost:5173','https://todo-dev-ops.vercel.app']
 
 const app=express();
 app.use(cors({origin:allowedOrigins , credentials :true}))
